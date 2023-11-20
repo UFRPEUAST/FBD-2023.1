@@ -30,8 +30,7 @@ def create_categoria():
         return response
 
     categoria = Categoria(**data)
-    categoria = dao_categoria.salvar(categoria)
-    print(categoria)
+    dao_categoria.salvar(categoria)
     response = jsonify('OK')
     response.status_code = 201
     return response
@@ -49,20 +48,3 @@ def get_or_create_categorias():
 def get_categoria_by_id(id: int):
     print('id', id)
     return []
-
-# def produtos():
-#     if request.method == 'GET':
-#         conn = psycopg2.connect(**conf)
-#         cursor = conn.cursor()
-#         cursor.execute("SELECT * FROM produto")
-#         cols = [desc[0] for desc in cursor.description]
-#         results = cursor.fetchall()
-#         results = [dict(zip(cols, i)) for i in results]
-#         response = jsonify(results)
-#         response.status_code = 200
-#         return response
-#     if request.method == 'POST':
-#         response = jsonify('OK')
-#         response.status_code = 201
-#         # produto = request.json
-#         return response
